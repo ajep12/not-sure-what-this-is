@@ -8,12 +8,16 @@ export async function GET() {
     // Filter only PDF files
     const pdfs = blobs
       .filter((blob) => blob.pathname.toLowerCase().endsWith('.pdf'))
-      .map((blob) => ({
-        url: blob.url,
-        filename: blob.pathname.split('/').pop() || 'unknown.pdf',
-        size: blob.size,
-        uploadedAt: blob.uploadedAt,
-      }))
+      .map((blob) => {
+        const filename = blob.pathname.split('/').pop() || 'unknown.pdf'
+        return {
+          url: `/api/view/${encodeURIComponent(filename)}`,
+          blobUrl: blob.url,
+          filename,
+          size: blob.size,
+          uploadedAt: blob.uploadedAt,
+        }
+      })
 
     return NextResponse.json({ pdfs })
   } catch (error) {

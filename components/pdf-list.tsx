@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 
 interface PDF {
   url: string
+  blobUrl: string
   filename: string
   size: number
   uploadedAt: string
@@ -78,8 +79,8 @@ export function PDFList({ pdfs, onDelete, isDeleting }: PDFListProps) {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => onDelete(pdf.url)}
-                disabled={isDeleting === pdf.url}
+                onClick={() => onDelete(pdf.blobUrl)}
+                disabled={isDeleting === pdf.blobUrl}
                 className="text-destructive hover:bg-destructive hover:text-destructive-foreground"
               >
                 <Trash2 className="h-4 w-4" />
