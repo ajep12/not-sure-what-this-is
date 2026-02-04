@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState, useCallback } from "react"
-import { PDFUploader } from '@/components/pdf-uploader'
-import { PDFList } from '@/components/pdf-list'
+import { PDFUploader } from "@/components/pdf-uploader"
+import { PDFList } from "@/components/pdf-list"
 
 interface PDF {
   url: string
