@@ -5,6 +5,11 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
     const file = formData.get('file') as File
+    const password = formData.get('password') as string
+
+    if (!password || password !== process.env.UPLOAD_PASSWORD) {
+      return NextResponse.json({ error: 'Invalid password' }, { status: 401 })
+    }
 
     if (!file) {
       return NextResponse.json({ error: 'No file provided' }, { status: 400 })

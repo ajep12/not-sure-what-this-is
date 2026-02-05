@@ -3,8 +3,9 @@
 import React from "react"
 
 import { useState, useRef } from 'react'
-import { Upload } from 'lucide-react'
+import { Upload, Lock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 interface PDFUploaderProps {
   onUploadComplete: () => void
@@ -13,6 +14,7 @@ interface PDFUploaderProps {
 export function PDFUploader({ onUploadComplete }: PDFUploaderProps) {
   const [isUploading, setIsUploading] = useState(false)
   const [dragActive, setDragActive] = useState(false)
+  const [password, setPassword] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleUpload = async (file: File) => {
